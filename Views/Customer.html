@@ -1,0 +1,23 @@
+﻿@model IEnumerable<SAOnlineMart.Models.Customer>
+
+    <h1>Customers</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Address</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var customer in Model)
+            {
+            <tr>
+                <td>@customer.Name</td>
+                <td>@customer.Email</td>
+                <td>@customer.Address</td>
+            </tr>
+            }
+        </tbody>
+    </table>

@@ -1,0 +1,34 @@
+﻿@model IEnumerable<SAOnlineMart.Models.Product>
+
+    <h1>Admin Panel</h1>
+
+    <p>
+        <a asp-action="Create">Add New Product</a>
+    </p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Category</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model)
+            {
+            <tr>
+                <td>@product.Name</td>
+                <td>@product.Description</td>
+                <td>@product.Price.ToString("C")</td>
+                <td>@product.Category</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@product.ProductID">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@product.ProductID">Delete</a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>

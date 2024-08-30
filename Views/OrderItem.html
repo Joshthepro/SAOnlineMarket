@@ -1,0 +1,40 @@
+﻿@model List<SAOnlineMart.Models.OrderItem>
+
+    <h1>Your Cart</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Unit Price</th>
+                <th>Total</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>@item.Product.Name</td>
+                <td>
+                    <form asp-action="UpdateCart" method="post">
+                        <input type="hidden" name="ProductID" value="@item.ProductID" />
+                        <input type="number" name="Quantity" value="@item.Quantity" min="1" />
+                        <button type="submit">Update</button>
+                    </form>
+                </td>
+                <td>@item.UnitPrice.ToString("C")</td>
+                <td>@(item.UnitPrice * item.Quantity).ToString("C")</td>
+                <td>
+                    <form asp-action="RemoveFromCart" method="post">
+                        <input type="hidden" name="ProductID" value="@item.ProductID" />
+                        <button type="submit">Remove</button>
+                    </form>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+
+    <a asp-action="Checkout">Proceed to Checkout</a>

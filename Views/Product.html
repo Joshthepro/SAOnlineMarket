@@ -1,0 +1,15 @@
+﻿@model IEnumerable<SAOnlineMart.Models.Product>
+
+    <h1>All Products</h1>
+
+    @foreach (var product in Model)
+    {
+    <div>
+        <h2>@product.Name</h2>
+        <p>@product.Description</p>
+        <p>Price: @product.Price.ToString("C")</p>
+        <a href="@Url.Action(" Details", "Product" , new { id=product.ProductID })">View Details</a>
+    </div>
+    }
+
+    
